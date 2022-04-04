@@ -8,10 +8,14 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "dependencies": {
     "next": "12.1.4",
     "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "react-dom": "18.0.0",
+    "ts-node": "^10.7.0"
   },
   "devDependencies": {
     "@prisma/client": "^3.11.1",
