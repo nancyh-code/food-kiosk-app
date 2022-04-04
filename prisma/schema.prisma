@@ -9,16 +9,19 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
-model Producto {
+model Product {
   id Int @id @default(autoincrement())
-  nombre String 
-  precio Float 
-  imagen String
+  name String 
+  price Float 
+  image String
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
 }
-model Categoria {
+model Category {
   id Int @id @default(autoincrement())
-  nombre String 
-  icono String
+  name String 
+  icon String
+  products Product[]
 }
 
 
