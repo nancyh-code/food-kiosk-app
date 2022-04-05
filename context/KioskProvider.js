@@ -5,6 +5,7 @@ const KioskContext = createContext();
 
 const KioskProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
+  const [currentCategory, setCurrentCategory] = useState({});
 
   const obtainCategories = async () => {
     try {
@@ -19,8 +20,15 @@ const KioskProvider = ({ children }) => {
     obtainCategories();
   }, []);
 
+  const handleClickCategory = (id) => {
+    const category = categories.filter((cat) => cat.id === id);
+    setCurrentCategory(category[0]);
+  };
+
   return (
-    <KioskContext.Provider value={{ categories }}>
+    <KioskContext.Provider
+      value={{ categories, currentCategory, handleClickCategory }}
+    >
       {children}
     </KioskContext.Provider>
   );

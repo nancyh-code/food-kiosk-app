@@ -1,9 +1,19 @@
 import Image from "next/image";
+import useKiosk from "../hooks/UseKiosk";
 
 const Category = ({ category }) => {
   const { name, icon, id } = category;
+  const { handleClickCategory, currentCategory } = useKiosk();
+
   return (
-    <div className="flex items-center gap-5 w-full border p-5 hover:bg-amber-50 vh-screen ">
+    <button
+      type="button"
+      className={`${
+        currentCategory?.id === id ? "bg-amber-50" : ""
+      } text-xl font-extrabold hover:cursor-pinter text-amber-400  flex items-center gap-5 w-full border p-5 hover:bg-amber-50 vh-screen`}
+      onClick={() => handleClickCategory(id)}
+    >
+      {/* <div className="flex items-center gap-5 w-full border p-5 hover:bg-amber-50 vh-screen "> */}
       <Image
         src={`/assets/img/icon_${icon}.svg`}
         alt="Imagen de icono"
@@ -11,13 +21,14 @@ const Category = ({ category }) => {
         height={40}
         className="ml-5"
       />
-      <button
+      {/* <button
         type="button"
         className="text-xl font-extrabold hover:cursor-pinter text-amber-400 "
-      >
-        {name}
-      </button>
-    </div>
+        onClick={() => handleClickCategory(id)}
+      > */}
+      {name}
+    </button>
+    // {/* </div> */}
   );
 };
 
