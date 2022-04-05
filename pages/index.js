@@ -4,7 +4,6 @@ import Image from "next/image";
 import Layout from "../layout/Layout";
 
 export default function Home({ categories }) {
-  console.log(categories);
   return (
     <Layout>
       <h1>Inicio</h1>

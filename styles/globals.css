@@ -5,7 +5,7 @@
 @layer base {
   html {
     font-family: "Apple Color Emoji", sans-serif;
-    background-color: #edf2f4;
+    background-color: #fcfaf9;
   }
   h1 {
     @apply text-4xl;
