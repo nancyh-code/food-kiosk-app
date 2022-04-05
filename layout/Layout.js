@@ -14,7 +14,7 @@ const Layout = ({ children, page }) => {
           <Sidebar />
         </aside>
         <main className="md:w-9/12 xl:w-3/4 2xl:w-4/5 h-screen overflow-y-scroll">
-          {children}
+          <div className="p-10 mt-5">{children}</div>
         </main>
       </div>
     </>
