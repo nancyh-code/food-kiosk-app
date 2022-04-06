@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext } from "react";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 const KioskContext = createContext();
@@ -40,8 +41,19 @@ const KioskProvider = ({ children }) => {
     setModal(!modal);
   };
 
-  const addingOrder = ({ categoryId, image, ...product }) => {
-    setOrder([...order, product]);
+  const handleAddingOrder = ({ categoryId, image, ...product }) => {
+    if (order.some((productState) => productState.id === product.id)) {
+      // Order update with quantities
+      const orderUpdate = order.map((productState) =>
+        productState.id === product.id ? product : productState
+      );
+      setOrder(orderUpdate);
+      toast.success("Su pedido ha sido actualizado");
+    } else {
+      setOrder([...order, product]);
+      toast.success("Agregado a su pedido");
+    }
+    setModal(false);
   };
 
   return (
@@ -54,7 +66,8 @@ const KioskProvider = ({ children }) => {
         handleSetProduct,
         modal,
         handleChangeModal,
-        addingOrder,
+        handleAddingOrder,
+        order,
       }}
     >
       {children}

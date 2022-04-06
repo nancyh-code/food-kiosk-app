@@ -1,11 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import useKiosk from "../hooks/UseKiosk";
 import { quantityFormatting } from "../helpers/index";
 
 const ModalProduct = () => {
-  const { product, handleChangeModal, addingOrder } = useKiosk();
+  const { product, handleChangeModal, handleAddingOrder, order } = useKiosk();
   const [quantity, setQuantity] = useState(1);
+  const [editOrder, setEditOrder] = useState(false);
+  //Check order update in modal
+  useEffect(() => {
+    if (order.some((oderState) => oderState.id === product.id)) {
+      const editProduct = order.find(
+        (oderState) => oderState.id === product.id
+      );
+      setEditOrder(true);
+      setQuantity(editProduct.quantity);
+    }
+  }, [product, order]);
 
   return (
     <div
@@ -65,7 +76,7 @@ const ModalProduct = () => {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth="1.5"
+                      strokeWidth="2"
                       d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
                     ></path>
                   </svg>
@@ -88,7 +99,7 @@ const ModalProduct = () => {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth="1.5"
+                      strokeWidth="2"
                       d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
                     ></path>
                   </svg>
@@ -105,9 +116,9 @@ const ModalProduct = () => {
             </button>
             <button
               className="inline-block px-5 py-2.5 bg-red-600 font-semibold text-white text-xs  rounded-full leading-tight uppercase hover:bg-red-700 focus:outline-none focus:ring-0 shadow-md hover:shadow-lg active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out "
-              onClick={() => addingOrder({ ...product, quantity })}
+              onClick={() => handleAddingOrder({ ...product, quantity })}
             >
-              Agregar
+              {editOrder ? "Modificar pedido" : "Agregar al pedido"}
             </button>
           </footer>
         </div>
