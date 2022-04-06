@@ -23,7 +23,7 @@ const Product = ({ product }) => {
           </p>
           <button
             type="button"
-            className="bg-red-500 hover:bg-red-600 text-amber-50 p-1 rounded-full text-s md:w-100 font-semibold w-24"
+            className="inline-block px-2 py-2.5 bg-red-600 font-semibold text-white text-xs  w-24 rounded-full leading-tight uppercase hover:bg-red-700 focus:outline-none focus:ring-0 shadow-md hover:shadow-lg active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out"
             onClick={() => {
               handleChangeModal();
               handleSetProduct(product);
