@@ -9,8 +9,8 @@ export default function Home() {
 
   return (
     <Layout page={`Menu ${currentCategory?.name}`}>
-      <h1 className="font-black text-slate-700">{currentCategory?.name}</h1>
-      <p className="text-xl my-10 text-slate-800">
+      <h1 className="font-black text-slate-800">{currentCategory?.name}</h1>
+      <p className="text-xl my-10 text-slate-900">
         Elige y personaliza tu pedido
       </p>
       <div className="grid gap-5 grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
