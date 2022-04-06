@@ -9,7 +9,9 @@ export default function Home() {
 
   return (
     <Layout page={`Menu ${currentCategory?.name}`}>
-      <h1 className="font-black text-slate-800">{currentCategory?.name}</h1>
+      <h1 className="font-black text-slate-800 text-2xl md:text-5xl">
+        {currentCategory?.name}
+      </h1>
       <p className="text-xl my-10 text-slate-900">
         Elige y personaliza tu pedido
       </p>
