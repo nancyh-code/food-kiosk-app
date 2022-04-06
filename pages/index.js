@@ -6,7 +6,7 @@ import Product from "../components/Product";
 
 export default function Home() {
   const { currentCategory } = useKiosk();
-  console.log(currentCategory);
+
   return (
     <Layout page={`Menu ${currentCategory?.name}`}>
       <h1 className="font-black text-slate-700">{currentCategory?.name}</h1>
