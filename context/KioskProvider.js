@@ -1,6 +1,7 @@
 import { useState, useEffect, createContext } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const KioskContext = createContext();
 
@@ -10,6 +11,8 @@ const KioskProvider = ({ children }) => {
   const [product, setProduct] = useState({});
   const [modal, setModal] = useState(false);
   const [order, setOrder] = useState([]);
+
+  const router = useRouter();
 
   const obtainCategories = async () => {
     try {
@@ -31,6 +34,7 @@ const KioskProvider = ({ children }) => {
   const handleClickCategory = (id) => {
     const category = categories.filter((cat) => cat.id === id);
     setCurrentCategory(category[0]);
+    router.push("/");
   };
 
   const handleSetProduct = (product) => {
