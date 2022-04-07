@@ -2,8 +2,8 @@ import { useRouter } from "next/router";
 
 const steps = [
   { step: 1, name: "Menú", url: "/" },
-  { step: 2, name: "Resumen del Pedido", url: "/order" },
-  { step: 3, name: "Total a pagar", url: "/total" },
+  { step: 2, name: "Selección", url: "/order" },
+  { step: 3, name: "Pago", url: "/total" },
 ];
 
 const Steps = () => {
@@ -30,7 +30,7 @@ const Steps = () => {
             onClick={() => {
               router.push(st.url);
             }}
-            className="tex-s md:text-lg font-semibold italic text-slate-700 mb-4"
+            className="tex-xs md:text-md font-semibold italic text-slate-700 mb-2"
             key={st.step}
           >
             {st.name}
