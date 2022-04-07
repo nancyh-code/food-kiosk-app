@@ -1,9 +1,11 @@
 import { useEffect, useCallback } from "react";
 import Layout from "../layout/Layout";
 import useKiosk from "../hooks/UseKiosk";
+import { quantityFormatting } from "../helpers";
 
 export default function Total() {
-  const { order, customerName, setCustomerName } = useKiosk();
+  const { order, customerName, setCustomerName, placeOrder, total } =
+    useKiosk();
 
   const checkOrder = useCallback(() => {
     return order.length === 0 || customerName === "" || customerName.length < 3;
@@ -12,11 +14,6 @@ export default function Total() {
   useEffect(() => {
     checkOrder();
   }, [order, checkOrder]);
-
-  const placeOrder = (e) => {
-    e.preventDefault();
-    console.log("Enviando prden");
-  };
 
   return (
     <Layout page="Total">
@@ -44,7 +41,7 @@ export default function Total() {
         <div className="mt-10">
           <p className="text-xl font-bold">
             Total a Pagar: {""}
-            <span className="font-extrabold"></span>
+            <span className="font-extrabold">{quantityFormatting(total)}</span>
           </p>
         </div>
         <div className="mt-10">

@@ -12,6 +12,7 @@ const KioskProvider = ({ children }) => {
   const [modal, setModal] = useState(false);
   const [order, setOrder] = useState([]);
   const [customerName, setCustomerName] = useState("");
+  const [total, setTotal] = useState(0);
 
   const router = useRouter();
 
@@ -31,6 +32,14 @@ const KioskProvider = ({ children }) => {
   useEffect(() => {
     setCurrentCategory(categories[0]);
   }, [categories]);
+
+  useEffect(() => {
+    const newTotal = order.reduce(
+      (total, product) => product.price * product.quantity + total,
+      0
+    );
+    setTotal(newTotal);
+  }, [order]);
 
   const handleClickCategory = (id) => {
     const category = categories.filter((cat) => cat.id === id);
@@ -72,6 +81,11 @@ const KioskProvider = ({ children }) => {
     setOrder(updateOrder);
   };
 
+  const placeOrder = (e) => {
+    e.preventDefault();
+    console.log("Enviando prden");
+  };
+
   return (
     <KioskContext.Provider
       value={{
@@ -88,6 +102,8 @@ const KioskProvider = ({ children }) => {
         handleDeleteProduct,
         customerName,
         setCustomerName,
+        placeOrder,
+        total,
       }}
     >
       {children}
