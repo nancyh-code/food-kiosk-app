@@ -11,6 +11,7 @@ const KioskProvider = ({ children }) => {
   const [product, setProduct] = useState({});
   const [modal, setModal] = useState(false);
   const [order, setOrder] = useState([]);
+  const [customerName, setCustomerName] = useState("");
 
   const router = useRouter();
 
@@ -85,6 +86,8 @@ const KioskProvider = ({ children }) => {
         order,
         handleEditQuantity,
         handleDeleteProduct,
+        customerName,
+        setCustomerName,
       }}
     >
       {children}

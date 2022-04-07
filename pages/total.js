@@ -3,11 +3,11 @@ import Layout from "../layout/Layout";
 import useKiosk from "../hooks/UseKiosk";
 
 export default function Total() {
-  const { order } = useKiosk();
+  const { order, customerName, setCustomerName } = useKiosk();
 
   const checkOrder = useCallback(() => {
-    return order.length === 0;
-  }, [order]);
+    return order.length === 0 || customerName === "" || customerName.length < 3;
+  }, [order, customerName]);
 
   useEffect(() => {
     checkOrder();
@@ -37,6 +37,8 @@ export default function Total() {
             id="name"
             type="text"
             className="bg-gray-200 w-full lg:w-1/2 mt-3 p-2 rounded-md"
+            value={customerName}
+            onChange={(e) => setCustomerName(e.target.value)}
           />
         </div>
         <div className="mt-10">
