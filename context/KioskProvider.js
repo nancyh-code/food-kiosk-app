@@ -55,10 +55,16 @@ const KioskProvider = ({ children }) => {
     }
     setModal(false);
   };
+
   const handleEditQuantity = (id) => {
     const updateProduct = order.filter((product) => product.id === id);
     setProduct(updateProduct[0]);
     setModal(!modal);
+  };
+
+  const handleDeleteProduct = (id) => {
+    const updateOrder = order.filter((product) => product.id !== id);
+    setOrder(updateOrder);
   };
 
   return (
@@ -74,6 +80,7 @@ const KioskProvider = ({ children }) => {
         handleAddingOrder,
         order,
         handleEditQuantity,
+        handleDeleteProduct,
       }}
     >
       {children}

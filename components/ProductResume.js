@@ -3,7 +3,7 @@ import { quantityFormatting } from "../helpers";
 import useKiosk from "../hooks/UseKiosk";
 
 const ProductResume = ({ product }) => {
-  const { handleEditQuantity } = useKiosk();
+  const { handleEditQuantity, handleDeleteProduct } = useKiosk();
   return (
     <div className="shadow-xl p-1 mb-3 flex gap-3 items-center rounded-lg mr-2">
       <div className="md:w-1/6 s:w-1/6 md:p-2 p-0<">
@@ -58,7 +58,7 @@ const ProductResume = ({ product }) => {
         <button
           type="button"
           className="flex gap-1 text-center px-6 py-2 border-2 border-red-600 text-red-600 font-semibold text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out shadow-lg hover:shadow-none mt-2 "
-          // onClick={}
+          onClick={() => handleDeleteProduct(product.id)}
         >
           <svg
             className="w-4 h-4"
