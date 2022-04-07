@@ -1,15 +1,18 @@
 import Image from "next/image";
 import { quantityFormatting } from "../helpers";
+import useKiosk from "../hooks/UseKiosk";
 
 const ProductResume = ({ product }) => {
+  const { handleEditQuantity } = useKiosk();
   return (
-    <div className="shadow-xl p-3 mb-3 flex gap-2 items-center rounded-lg">
-      <div className="md:w-1/6">
+    <div className="shadow-xl p-1 mb-3 flex gap-3 items-center rounded-lg mr-2">
+      <div className="md:w-1/6 s:w-1/6 md:p-2 p-0<">
         <Image
-          width={80}
+          width={90}
           height={120}
           src={`/assets/img/${product.image}.jpg`}
           alt={`Imagen de ${product.name}`}
+          className="w-full h-full object-center object-cover  md:block hidden"
         />
       </div>
       <div className="md:w-5/6">
@@ -20,7 +23,7 @@ const ProductResume = ({ product }) => {
           Cantidad:
           {product.quantity}
         </p>
-        <p className="text-s md:text-md font-extrabold text-amber-400 ">
+        <p className="text-s s:text-xs md:text-md font-extrabold text-amber-400 ">
           Precio:
           {quantityFormatting(product.price)}
         </p>
@@ -29,10 +32,11 @@ const ProductResume = ({ product }) => {
           {quantityFormatting(product.price * product.quantity)}
         </p>
       </div>
-      <div className="">
+      <div className="mr-2">
         <button
           type="button"
           className="flex gap-1 px-8 py-2.5 bg-red-600 font-semibold text-white text-xs rounded-full leading-tight uppercase hover:bg-red-700 focus:outline-none focus:ring-0 shadow-md hover:shadow-lg active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out"
+          onClick={() => handleEditQuantity(product.id)}
         >
           <svg
             className="w-4 h-4"
