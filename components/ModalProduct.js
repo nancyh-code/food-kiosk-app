@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import useKiosk from "../hooks/UseKiosk";
-import { quantityFormatting } from "../helpers/index";
+import { quantityFormatting } from "../helpers";
 
 const ModalProduct = () => {
   const { product, handleChangeModal, handleAddingOrder, order } = useKiosk();
@@ -54,7 +54,7 @@ const ModalProduct = () => {
               />
             </div>
             <div className="md:w-2/3">
-              <h2 className="">{product.name}</h2>
+              <h2 className="text-slate-800">{product.name}</h2>
               <p className="mt-3 font-black text-md md:text-lg text-amber-500">
                 {quantityFormatting(product.price)}
               </p>
@@ -81,7 +81,9 @@ const ModalProduct = () => {
                     ></path>
                   </svg>
                 </button>
-                <p className="text-lg font-extrabold">{quantity}</p>
+                <p className="text-lg font-extrabold text-slate-800">
+                  {quantity}
+                </p>
                 <button
                   type="button"
                   onClick={() => {

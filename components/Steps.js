@@ -1,22 +1,20 @@
 import { useRouter } from "next/router";
-import useKiosk from "../hooks/UseKiosk";
 
 const steps = [
   { step: 1, name: "Menú", url: "/" },
-  { step: 2, name: "Resumen del Pedido", url: "/orderSummary" },
+  { step: 2, name: "Resumen del Pedido", url: "/order" },
   { step: 3, name: "Total a pagar", url: "/total" },
 ];
 
 const Steps = () => {
   const router = useRouter();
-  const { handleChangeStep, step } = useKiosk();
 
   const calculateProgress = () => {
     // return (step / 3) * 100;
     let valor;
-    if (step === 1) {
+    if (router.pathname === "/") {
       valor = 3;
-    } else if (step === 2) {
+    } else if (router.pathname === "/order") {
       valor = 50;
     } else {
       valor = 100;
@@ -31,7 +29,6 @@ const Steps = () => {
           <button
             onClick={() => {
               router.push(st.url);
-              handleChangeStep(st.step);
             }}
             className="tex-s md:text-lg font-semibold italic text-slate-700 mb-4"
             key={st.step}
