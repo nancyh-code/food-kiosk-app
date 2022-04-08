@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 const steps = [
   { step: 1, name: "Menú", url: "/" },
   { step: 2, name: "Selección", url: "/orders" },
-  { step: 3, name: "Pago", url: "/total" },
+  { step: 3, name: "Confirmación", url: "/total" },
 ];
 
 const Steps = () => {

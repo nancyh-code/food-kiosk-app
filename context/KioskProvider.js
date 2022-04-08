@@ -90,7 +90,19 @@ const KioskProvider = ({ children }) => {
         total,
         order,
       });
-      console.log(data);
+
+      //Resetting the app
+
+      setCurrentCategory(categories[0]);
+      setOrder([]);
+      setCustomerName("");
+      setTotal(0);
+
+      toast.success("Pedido Recibido Correctamente");
+
+      setTimeout(() => {
+        router.push("/");
+      }, 2500);
     } catch (error) {
       console.log(error);
     }
