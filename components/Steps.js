@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 
 const steps = [
   { step: 1, name: "Menú", url: "/" },
-  { step: 2, name: "Selección", url: "/order" },
+  { step: 2, name: "Selección", url: "/orders" },
   { step: 3, name: "Pago", url: "/total" },
 ];
 
@@ -14,7 +14,7 @@ const Steps = () => {
     let valor;
     if (router.pathname === "/") {
       valor = 3;
-    } else if (router.pathname === "/order") {
+    } else if (router.pathname === "/orders") {
       valor = 50;
     } else {
       valor = 100;

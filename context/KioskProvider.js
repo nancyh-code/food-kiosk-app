@@ -85,10 +85,10 @@ const KioskProvider = ({ children }) => {
     e.preventDefault();
     try {
       const { data } = await axios.post("/api/orders", {
-        order,
         customerName,
-        total,
         date: Date.now().toString(),
+        total,
+        order,
       });
       console.log(data);
     } catch (error) {

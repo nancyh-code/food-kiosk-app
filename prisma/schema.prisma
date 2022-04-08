@@ -24,11 +24,12 @@ model Category {
   products Product[]
 }
 
-model Order {
+model Purshase {
   id Int @id @default(autoincrement())
   customerName String
   date String
-  total Json
+  total Float
+  order Json
 }
 
 
