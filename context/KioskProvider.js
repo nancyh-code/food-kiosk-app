@@ -81,9 +81,19 @@ const KioskProvider = ({ children }) => {
     setOrder(updateOrder);
   };
 
-  const placeOrder = (e) => {
+  const placeOrder = async (e) => {
     e.preventDefault();
-    console.log("Enviando prden");
+    try {
+      const { data } = await axios.post("/api/orders", {
+        order,
+        customerName,
+        total,
+        date: Date.now().toString(),
+      });
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
